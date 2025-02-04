@@ -70,3 +70,14 @@ body {
     @apply bg-background text-foreground;
   }
 }
+
+.card{
+  opacity: 0.8;
+  transform: scale(0.95);
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+
+.card:first-child {
+  opacity: 1;
+  transform: scale(1);
+}
