@@ -1,0 +1,44 @@
+.cardContainer{
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: sticky;
+    bottom: 0px;
+    .card{
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      top: -25%;
+      height: 500px;
+      width: 1500px;
+      border-radius: 25px;
+      transform-origin: bottom;
+    
+      .body{
+        display: flex;
+        height: 100%;
+        gap: 50px;
+  
+        .description{
+          width: 40%;
+          position: relative;
+          top: 10%;
+      
+        }
+  
+        .imageContainer{
+          position: relative;
+          width: 60%;
+          height: 100%;
+          border-radius: 25px;
+          overflow: hidden;
+          .inner{
+            width: 100%;
+            height: 100%;
+          }
+         
+        }
+      }
+    }
+  }
