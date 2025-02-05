@@ -1,70 +1,35 @@
-"use client";
-import Image from "next/image";
-import styles from "../styles/style.module.css";
-import { useTransform, motion, useScroll, MotionValue } from "framer-motion";
-import React, { useRef } from "react";
+import { LucideIcon } from "lucide-react";
+import Image, { StaticImageData } from "next/image";
 
-interface CardProps {
-  i?: number;
-  title?: string;
+interface CardItemProps {
+  i: number;
+  icon: LucideIcon;
   description: string;
-  src?: string;
-  url?: string;
-  color: string;
-  progress: any;
-  range: any;
-  targetScale: any;
-  transform: any;
-  style?: React.CSSProperties;
+  image: StaticImageData;
 }
 
-const Card = ({
-  i,
-  description,
-  url,
-  color,
-  progress,
-  range,
-  targetScale,
-  transform,
-}: CardProps) => {
-  const container = useRef(null);
-  const { scrollYProgress } = useScroll({
-    target: container,
-    offset: ["start end", "start start"],
-  });
-
-  console.log("Image link: ", url);
-
-  const imageScale = useTransform(scrollYProgress, [0, 1], [2, 1]);
-  const scale = useTransform(progress, range, [1, targetScale]);
-
+const Card = ({ i, icon: Icon, description, image }: CardItemProps) => {
   return (
-    <div ref={container} className={styles.cardContainer} style={{ transform }}>
-      <motion.div
-        style={{
-          backgroundColor: color,
-          scale,
-          top: `calc(5vh - ${i * 75}px)`,
-        }}
-        className={styles.card}
+    <div className="h-screen flex items-center justify-center sticky top-0">
+      <div
+        className={`relative bg-[#141a20] rounded-3xl w-[1328px] h-[464px] flex flex-row shadow-2xl shadow-black`}
+        style={{ top: `calc(-5vh + ${-i * 82}px)` }}
       >
-        <div className={styles.body}>
-          <div className={styles.description}>
-            <p>{description}</p>
-          </div>
-
-          <div className={styles.imageContainer}>
-              <Image
-                src={url}
-                alt="Professional in business  attire"
-                className="w-full h-auto rounded-md"
-                width={200}
-                height={300}
-              />
+        <div className="flex flex-col justify-between w-[60%] p-14">
+          <Icon className="h-14 w-14" />
+          <div className="w-2/3">
+             <p className="text-xl text-[#d1d9e1]">{description}</p>
           </div>
         </div>
-      </motion.div>
+        <div className="relative w-1/2 h-full rounded-3xl">
+          <Image
+            fill
+            src={image}
+            alt="image"
+            className="object-cover absolute top-0 left-0 w-full h-full rounded-3xl"
+          />
+        </div>
+      </div>
     </div>
   );
 };
