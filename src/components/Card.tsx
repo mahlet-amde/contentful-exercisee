@@ -18,6 +18,7 @@ const Card = ({ i, icon: Icon, description, image }: CardItemProps) => {
       <div
         className={`relative bg-[#141a20] rounded-3xl w-[1328px] h-[464px] flex flex-row shadow-2xl shadow-black`}
         style={{ top: `calc(-5vh + ${-i * 82}px)` }}
+        style={{ bottom: `calc(-5vh + ${-i * 82}px)` }}
       >
         <div className="flex flex-col justify-between w-[60%] p-14">
           <Icon className="h-14 w-14" />
