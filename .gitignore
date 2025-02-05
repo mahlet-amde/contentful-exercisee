@@ -39,3 +39,13 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+.vercel
+public/images/img.png
+src/components/Cardd.tsx
+src/components/CardItem.tsx
+src/components/CardList.tsx
+src/components/StackedScrollCards.tsx
+src/components/VimeoCard.tsx
+src/components/VimeoSolutionsCard.tsx
+src/components/ui/button.tsx
