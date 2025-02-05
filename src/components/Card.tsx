@@ -11,6 +11,10 @@ interface CardItemProps {
 const Card = ({ i, icon: Icon, description, image }: CardItemProps) => {
   return (
     <div className="h-screen flex items-center justify-center lg:sticky md:sticky sm:relative top-0">
+    <div
+      className="h-screen flex items-center justify-center md:sticky bottom-0"
+      style={{ zIndex: `${3 - i}` }}
+    >
       <div
         className={`relative bg-[#141a20] rounded-3xl w-[1328px] h-[464px] flex flex-row shadow-2xl shadow-black`}
         style={{ top: `calc(-5vh + ${-i * 82}px)` }}
