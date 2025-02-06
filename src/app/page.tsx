@@ -5,8 +5,17 @@ import ImageTwo from "@/../public/image_two.avif";
 import ImageThree from "@/../public/image_three.avif";
 import { AppWindowIcon, ChartNoAxesCombinedIcon, HomeIcon } from "lucide-react";
 import Card from "@/components/Card";
+import LandingCard from "@/components/ui/LandingCard";
 
-export default function Home() {
+export default async function Home() {
+  // const featureCard = await fetchEntries("featureCard");
+  // console.log("featureCard items: ", featureCard[0].fields);
+
+  // const icon = featureCard[0]?.fields?.icon?.fields?.file?.url;
+  // console.log("icon: ", icon);
+
+  // const description = featureCard[0]?.fields?.description?.content[0]?.content[0]?.value;
+  // console.log("Description ", description);
 
   const cards = [
     {
@@ -32,6 +41,8 @@ export default function Home() {
       {cards.map((card, i) => (
         <Card key={`p_${i}`} i={i} {...card} />
       ))}
+      <Hero/>
+      <LandingCard />
     </main>
   );
 }
