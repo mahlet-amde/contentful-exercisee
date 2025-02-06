@@ -17,6 +17,20 @@ export default async function Home() {
   // const description = featureCard[0]?.fields?.description?.content[0]?.content[0]?.value;
   // console.log("Description ", description);
 
+  const featureHero = 
+    {
+      eyebrow:"Turn viewers into paying subscribers",
+      tite: "Video monetization platform",
+    }
+  
+
+  const landingHero = 
+    {
+      eyebrow:"Use Cases",
+      tite: "How customers use Vimeo"
+    }
+  
+
   const cards = [
     {
       icon: HomeIcon,
@@ -37,12 +51,12 @@ export default async function Home() {
 
   return (
     <main className="relative">
-      <Hero/>
+      <Hero eyebrow={featureHero.eyebrow} title={featureHero.tite} />
       {cards.map((card, i) => (
         <Card key={`p_${i}`} i={i} {...card} />
       ))}
-      <Hero/>
-      <LandingCard />
+      <Hero eyebrow={landingHero.eyebrow} title={landingHero.tite}/>
+      <LandingCard  />
     </main>
   );
 }
