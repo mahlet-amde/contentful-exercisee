@@ -1,89 +1,61 @@
-"use client"
+"use client";
 
-import ImageOne from "@/../public/image_one.avif";
-import ImageTwo from "@/../public/image_two.avif";
-import ImageThree from "@/../public/image_three.avif";
-import {
-  AppWindowIcon,
-  ChartNoAxesCombinedIcon,
-  HomeIcon,
-} from "lucide-react";
+
 import { useState } from "react";
-import { motion } from "framer-motion";
 import Image from "next/image";
+import { VideoModal } from "../video-modal";
 
-
-
-const LandingCard = () => {
+const LandingCard = ({cards}: any) => {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
-  const cards = [
-    {
-      icon: HomeIcon,
-      description:
-        "Sell on-demand content globally and accept payment in over 100 currencies.",
-      image: ImageOne,
-    },
-    {
-      icon: AppWindowIcon,
-      description:
-        "Sell on-demand content globally and accept payment in over 100 currencies.",
-      image: ImageTwo,
-    },
-    {
-      icon: ChartNoAxesCombinedIcon,
-      description:
-        "Offer incentives like free trials, exclusive content, and promotions to grow your following.",
-      image: ImageThree,
-    },
-    {
-        icon: ChartNoAxesCombinedIcon,
-        description:
-          "Offer incentives like free trials, exclusive content, and promotions to grow your following.",
-        image: ImageThree,
-      },
-    //   {
-    //     icon: ChartNoAxesCombinedIcon,
-    //     description:
-    //       "Offer incentives like free trials, exclusive content, and promotions to grow your following.",
-    //     image: ImageThree,
-    //   },
-  ];
+  const [modalOpen, setModalOpen] = useState<number | null>(null)
+  const openVideoModal = (index: number) => {
+    setModalOpen(index)
+  }
+  const closeVideoModal = () => {
+    setModalOpen(null)
+  }
+ 
 
   return (
-    <div className=" flex justify-center gap-6 mt-10 px-6 flex-wrap md:flex-nowrap">
+    <div className="flex flex-wrap sm:flex-nowrap sm:justify-between gap-4 max-w-7xl mx-auto ">
       {cards.map((card, index) => (
-        <motion.div key={index}
-        className="bg-white rounded-2xl shadow-lg overflow-hidden max-w-xs cursor-pointer transition-all flex-grow"
-        initial={{ scaleX: 1 }}
-        animate={{
-            scaleX: hoveredIndex === index ? 1.3 : hoveredIndex !== null ? 0.7 : 1,
-        }}
-        // transition={{ type: "spring", stiffness: 200, damping: 10}}
-        style={{
-            flex: hoveredIndex === index ? 2: 1,
-            transition: "flex 0.3s ease-in-out",
-        }}
-        onMouseEnter={() => setHoveredIndex(index)}
-        onMouseLeave={() => setHoveredIndex(null)}>
+        <div
+          key={index}
+          className={`block transition-all duration-300 ease-in-out 
+        ${
+            hoveredIndex === index
+            ? "sm:w-[calc(50%-0.5rem)]"
+            : "sm:w-[calc(25%-0.75rem)]"
+        }
+        w-full mb-4 sm:mb-0 cursor-youtube-play`}
+          onMouseEnter={() => setHoveredIndex(index)}
+          onMouseLeave={() => setHoveredIndex(null)}
+            onClick={() => openVideoModal(index)}
+        >
           <div
-            className={`relative bg-[#141a20] rounded-3xl w-[464px] h-[464px] flex flex-col-reverse shadow-2xl shadow-black`}
+            className={`relative bg-[#141a20] rounded-3xl  flex flex-col-reverse shadow-2xl shadow-black `}
           >
             <div className="flex flex-col justify-between  z-index-10">
-              <div className="w-full ">
-                <p className="text-xl text-[#d1d9e1] ">{card.description}</p>
+              <div className="p-4">
+                <h2 className="text-xl font-semibold mb-2">{card.title}</h2>
+              </div>
+              <div className="px-4 pb-4">
+                <p className="text-[#d1d9e1]">{card.description}</p>
               </div>
             </div>
-            <div className="relative md:w-full  h-full rounded-3xl">
+            <div className="relative w-full h-96 ">
               <Image
+                src={card.imageUrl}
+                alt={card.title}
                 fill
-                src={card.image}
-                alt="image"
-                className="object-cover absolute top-0 left-0 w-full h-full rounded-3xl"
+                style={{ objectFit: "cover" }}
+                className="rounded-3xl"
               />
             </div>
           </div>
-        </motion.div>
+        </div>
       ))}
+    
     </div>
   );
 };
