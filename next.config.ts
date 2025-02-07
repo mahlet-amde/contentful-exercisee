@@ -7,7 +7,9 @@ const nextConfig: NextConfig = {
     remotePatterns: [
       {hostname:"livedemo00.template-help.com"},
       {hostname:"images.ctfassets.net"},
-      {hostname:"i.vimeocdn.com"}
+      {hostname:"i.vimeocdn.com"},
+      {hostname:"assets.ctfassets.net"}
+      
       
     ], 
     // loader: "custom",
